@@ -1,0 +1,83 @@
+.wrapper {
+  max-width: 85%;
+  margin: 0 auto;
+}
+
+.header_section {
+  width: 96%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header_section h3 {
+  font-size: 1.5em;
+  letter-spacing: 1.2px;
+}
+
+.header_section a {
+  text-decoration: none;
+  color: #949494;
+  border-bottom: 1.3px solid #949494;
+  padding: 0.15em 0.3em;
+  transition: 0.3s;
+  font-weight: bold;
+}
+
+.menu {
+  padding: 1.3em 0 2.2em 0; 
+  display: flex;
+  justify-content: space-around;
+}
+
+.menu li {
+  border-radius: 1em;
+  overflow: hidden;
+  max-width: 30%;
+  box-shadow: 0px 0px 2px 2px #949494;
+  list-style-type: none;
+}
+
+.menu li img { max-width: 100%; }
+.menu .info {
+  letter-spacing: 1px;
+  text-align: center;
+  margin: 1em;
+}
+
+.menu .info h4 {
+  font-size: 1.3em;
+}
+
+.menu .info .price {
+  color: #54D98C;
+  font-weight: bold;
+}
+
+.menu .info .description {
+  font-size: 1.1em;
+}
+
+.menu .info * {
+  padding: 0.4em 0;
+}
+
+.menu .readMore {
+  text-align: center;
+  display: block  ;
+  margin: 1.2em auto;
+  text-decoration: none;
+  color: inherit;
+  box-shadow: 0px 0px 2px 2px #949494;
+  max-width: 45%;
+  padding: 0.5em 0;
+  border-radius: 0.8em;
+  transition: 0.3s;
+}
+
+.menu .readMore:hover {
+  background: #949494;
+  color: #ffffff;
+}
+

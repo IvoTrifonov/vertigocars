@@ -1,0 +1,45 @@
+.steps {
+  margin-top: 1.5em;
+  padding-bottom: 2.5em;
+}
+
+.steps h3 {
+  color: #313537;
+  font-size: 1.8em;
+  text-align: center;
+  margin: 1.5em;
+}
+
+.list {
+  display: flex;
+  justify-content: space-around;
+}
+
+.list li {
+  box-shadow: 0px 0px 3px 3px rgb(189, 189, 189);
+  letter-spacing: 1px;
+  padding: 1em;
+  text-align: center;
+  list-style-type: none;
+  border-radius: 2em;
+  max-width: 25%;
+  transition: 0.3s;
+}
+
+.list li:hover {
+  background-color: #60696d;
+  color: #fff;
+}
+
+.list li:first-child {
+  padding-right: 3%;
+}
+
+.list li h5 {
+  margin: 0.5em;
+  font-size: 1em;
+}
+
+.list li .stepImage {
+  max-width: 15em;
+}

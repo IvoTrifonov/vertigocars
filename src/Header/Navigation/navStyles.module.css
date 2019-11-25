@@ -1,0 +1,54 @@
+.navigation { padding: 2em 0; }
+
+.menu { 
+  display: flex;
+  justify-content: space-between;
+}
+
+.menu .wrapper {
+  display: flex;
+}
+
+.menu li {
+  list-style-type: none;
+  margin: 0 1em;
+}
+
+.menu { letter-spacing: 1.5px; }
+
+.menu a {
+  text-shadow: 2px 2px #141414;
+  text-decoration: none;
+  font-weight: bold;
+  color: #ffffff;
+  font-size: 1.3em;
+  padding: 0 0.6rem;
+  transition: 0.4s;
+}
+
+.menu li a:hover,
+.menu .active {
+  text-shadow: none;
+  background-color: #ffffff;
+  color: #292929;
+  padding: 0.6rem;
+}
+
+.menu .login { 
+  padding-right: 1.2em;
+}
+
+.menu .login a {
+  text-shadow: 1.5px 1.5px #c2c2c2;
+  background: #FFF;
+  padding: 0.6rem;
+  color: #292929;
+  transition: 0.3s;
+  border: 1.5px solid transparent;
+}
+
+.menu .login a:hover {
+  background-color: transparent;
+  color: #FFF;
+  border-color: #FFF;
+}
