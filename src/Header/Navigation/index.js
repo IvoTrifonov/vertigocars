@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, NavLink } from "react-router-dom";
 import styles from './navStyles.module.css';
+import isLoggedIn from '../../helpers/isLoggedIn';
 
 const Navigation = () => {
   return (
@@ -23,9 +24,9 @@ const Navigation = () => {
             <NavLink to="/dealers" activeClassName={styles.active}>Dealers</NavLink>
           </li>
         </div>
-          <li className={styles.login}>
-            <Link to="/login">Login</Link>
-          </li>
+        <li className={styles.login}>
+          <Link to="/login">Login</Link>
+        </li>
       </ul>
     </nav>
   )

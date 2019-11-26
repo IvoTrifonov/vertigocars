@@ -3,11 +3,15 @@ import { Formik } from "formik";
 import * as Yup from 'yup';
 import { Link } from 'react-router-dom';
 import styles from '../shared/css/authFormStyles.module.css';
+import userService from '../services/user-service';
 
 class Register extends Component {
   submitHandler = (data) => {
-    // to implement userService registration
-    this.props.history.push('/login');
+    userService.register(data)
+      .then(() => {
+        const { username } = data;
+        this.props.history.push('/login', { username });
+      })
   }
 
   render() {
@@ -81,7 +85,7 @@ const Schema = Yup.object({
 
   password: Yup.string()
     .required("Password field is required!")
-    .min(4, 'Password must be at least 6 symbols long!')
+    .min(6, 'Password must be at least 6 symbols long!')
     .max(19, 'Password must be less than 18 symbols long!'),
 
   rePassword: Yup.string()
