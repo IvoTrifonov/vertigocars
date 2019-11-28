@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import styles from './homeStyles.module.css';
-import Bmwbanner from './Bmwbanner';
-import Steps from './Steps';
-import LatestReviews from './LatestReviews';
+import Bmwbanner from './bmwbanner';
+import Steps from './steps';
+import LatestReviews from './latestReviews';
 
 class Home extends Component {
   render() {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, NavLink } from "react-router-dom";
 import styles from './navStyles.module.css';
-import isLoggedIn from '../../helpers/isLoggedIn';
+import isLoggedIn from '../../../helpers/isLoggedIn';
 
 const Navigation = () => {
   return (
@@ -12,10 +12,7 @@ const Navigation = () => {
             <NavLink exact activeClassName={styles.active} to="/">Home</NavLink>
           </li>
           <li>
-            <NavLink to="/newcars" activeClassName={styles.active}>New Cars</NavLink>
-          </li>
-          <li>
-            <NavLink to="/usedcars" activeClassName={styles.active}>Used Cars</NavLink>
+            <NavLink to="/caroffers" activeClassName={styles.active}>Car Offers</NavLink>
           </li>
           <li>
             <NavLink to="/carreviews" activeClassName={styles.active}>Car Reviews</NavLink>

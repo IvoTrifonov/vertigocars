@@ -1,20 +1,36 @@
 import React, { Component } from 'react';
-import { Formik } from "formik";
+import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { Link } from 'react-router-dom';
 import styles from '../shared/css/authFormStyles.module.css';
-import userService from '../services/user-service';
-
+import userService from '../../services/user-service';
 
 class Login extends Component {
+  state = {
+    ErrorMessage: undefined,
+    usernameFromRegister: ''
+  }
+
   submitHandler = (data) => {
     userService.login(data)
-    .then(() => { 
-      this.props.history.push('/');
+    .then((data) => { 
+      data === 'Invalid credentials' ? 
+        this.setState({
+          ErrorMessage: 'Invalid credentials'
+        }) : this.props.history.push('/');
     })
   }
 
+  componentDidMount() {
+    if (this.props.location.state) {
+      this.setState({
+        usernameFromRegister: this.props.location.state.username
+      })
+    }
+  }
+
   render() {
+    const { ErrorMessage, usernameFromRegister } = this.state;
     return (
       <Formik
         initialValues={{
@@ -27,6 +43,7 @@ class Login extends Component {
         {({ values, errors, handleSubmit, handleChange, handleBlur }) => {
           return (
             <form onSubmit={handleSubmit} className={styles.form}>
+              {ErrorMessage ? <span>{ErrorMessage}</span> : undefined }
               <label htmlFor="username">Username</label>
               <input
                 placeholder="Type username..."
@@ -34,7 +51,7 @@ class Login extends Component {
                 name="username"
                 onBlur={handleBlur}
                 onChange={handleChange}
-                value={values.username}
+                value={usernameFromRegister || values.username}
               />
               <span>
                 {errors.username}

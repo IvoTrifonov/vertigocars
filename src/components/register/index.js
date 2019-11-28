@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { Formik } from "formik";
+import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { Link } from 'react-router-dom';
 import styles from '../shared/css/authFormStyles.module.css';
-import userService from '../services/user-service';
+import userService from '../../services/user-service';
 
 class Register extends Component {
   submitHandler = (data) => {

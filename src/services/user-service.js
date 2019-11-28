@@ -18,7 +18,7 @@ const userService = {
       },
       credentials: 'include'
     }).then(res => res.text())
-  },
+ },
 
   logout: () => {
     return fetch(`http://localhost:9999/api/user/logout`, {
