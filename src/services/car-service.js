@@ -8,6 +8,17 @@ const carService = {
       },
       credentials: 'include'
     }).then(res => res.json())
+  },
+
+  findCars: (data) => {
+    return fetch(`http://localhost:9999/api/car/getCars`, {
+      body: JSON.stringify(data),
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json'
+      },
+      // credentials: 'include'
+    }).then(res => res.json())
   }
 }
 

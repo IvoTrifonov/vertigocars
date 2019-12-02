@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Navigation from './navigation';
 import styles from './headerStyles.module.css';
+// import isLoggedIn from '../../helpers/isLoggedIn';
 
-const Header = () => {
+const Header = ({ isLogged, username }) => {
   return (
     <header className={styles.header}>
-      <Navigation/>
+      <Navigation username={username} isLogged={isLogged}/>
     </header>
   )
 };

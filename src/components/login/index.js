@@ -1,49 +1,40 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { Link } from 'react-router-dom';
 import styles from '../shared/css/authFormStyles.module.css';
 import userService from '../../services/user-service';
 
-class Login extends Component {
-  state = {
-    ErrorMessage: undefined,
-    usernameFromRegister: ''
-  }
+const Login = ({ history, changeLogin }) => {
+  const [errorMessage, setErrorMessage] = useState(undefined);
 
-  submitHandler = (data) => {
-    userService.login(data)
-    .then((data) => { 
-      data === 'Invalid credentials' ? 
-        this.setState({
-          ErrorMessage: 'Invalid credentials'
-        }) : this.props.history.push('/');
-    })
-  }
-
-  componentDidMount() {
-    if (this.props.location.state) {
-      this.setState({
-        usernameFromRegister: this.props.location.state.username
+  const submitHandler = (data) => {
+      userService.login(data)
+      .then((res) => { 
+        if (res === 'Invalid credentials') {
+          setErrorMessage('Invalid credentials');
+        } else {
+          localStorage.setItem("userId", res._id);
+          localStorage.setItem("username", res.username);
+          changeLogin(true);
+          history.push('/');
+        }
       })
     }
-  }
 
-  render() {
-    const { ErrorMessage, usernameFromRegister } = this.state;
-    return (
-      <Formik
+  return (
+    <Formik
         initialValues={{
           username: '',
           password: '',
         }}
         validationSchema={Schema}
-        onSubmit={this.submitHandler}
+        onSubmit={submitHandler}
       >
         {({ values, errors, handleSubmit, handleChange, handleBlur }) => {
           return (
             <form onSubmit={handleSubmit} className={styles.form}>
-              {ErrorMessage ? <span>{ErrorMessage}</span> : undefined }
+              {errorMessage ? <span>{errorMessage}</span> : undefined }
               <label htmlFor="username">Username</label>
               <input
                 placeholder="Type username..."
@@ -51,7 +42,7 @@ class Login extends Component {
                 name="username"
                 onBlur={handleBlur}
                 onChange={handleChange}
-                value={usernameFromRegister || values.username}
+                value={values.username}
               />
               <span>
                 {errors.username}
@@ -77,8 +68,7 @@ class Login extends Component {
           );
         }}
       </Formik>
-    );
-  }
+  )
 }
 
 const Schema = Yup.object({

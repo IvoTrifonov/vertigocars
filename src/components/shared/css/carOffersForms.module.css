@@ -1,0 +1,117 @@
+.title {
+  font-size: 2em;
+  text-align: center;
+  margin: 1.2em;
+  color: #313537;
+}
+
+.form {
+  border: 1px solid #9da5b2;
+  border-radius: 0.7em;
+  display: flex;
+  flex-direction: column;
+  max-width: 50%;
+  margin: 0 auto;
+  padding: 1.5em;
+}
+
+.form div {
+  margin: 0.8rem 0;
+}
+
+.form label,
+.engineBox label {
+  display: inline-block;
+  text-align: right;
+  font-size: 1.1em;
+  padding: 0 1em;
+  width: 8em;
+}
+
+.form input,
+.form select {
+  outline: none;
+  border: 1px solid #9da5b2;
+  border-radius: 0.7em;
+  text-align: center;
+  padding: 0.5em 0.3em;
+  width: 30%;
+  margin: 0 auto;
+  transition: 0.3s;
+}
+
+.form select {
+  text-align-last:center;
+  width: 31.3%;
+}
+
+.form input:hover,
+.form select:hover {
+  border-color: rgb(0, 0, 0);
+}
+
+option {
+  font-size: 1.2em;
+  color: #FFFFFF;
+  border-radius:15px;
+  background-color:#9da5b2;
+}
+
+.form button {
+  font-size: 1em;
+  margin-top: 1em;
+  cursor: pointer;
+  width: 45%;
+  color: #FFFFFF;
+  background-color: #9da5b2;
+  transition: 0.3s;
+}
+
+.form button:hover {
+  background-color: #4A4A4A;
+}
+
+span {
+  color: rgb(214, 59, 59);
+  font-size: 0.9em;
+  padding-left: 1.3em;
+}
+
+.searchBtn {
+  display: block;
+  margin: 0 auto;
+}
+
+.loadSearchWrapper p {
+  text-align: center;
+}
+
+.searchValuesUl {
+  display: flex;
+  flex-wrap: wrap-reverse;
+}
+
+.searchValuesUl li {
+  margin: 0.2em;
+  list-style-type: none;
+  border: 1px solid #9da5b2;
+  border-radius: 0.7em;
+  padding: 0.5em;
+}
+
+.searchKey {
+  padding: 0;
+  color: rgb(116, 114, 114);
+  margin-right: 0.5em;
+}
+
+
+.description textarea {
+  vertical-align: top;
+  outline: none;
+  border: 1px solid #9da5b2;
+  border-radius: 0.4em;
+  padding: 0.6em;
+  width: 28.8%;
+  height: 6em;
+}

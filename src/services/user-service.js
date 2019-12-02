@@ -17,7 +17,7 @@ const userService = {
         'Content-type': 'application/json'
       },
       credentials: 'include'
-    }).then(res => res.text())
+    }).then(res => res.json())
  },
 
   logout: () => {
