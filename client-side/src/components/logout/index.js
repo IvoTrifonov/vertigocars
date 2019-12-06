@@ -1,15 +1,19 @@
-import userService from '../../services/user-service';
+import { useContext } from "react";
+import userService from "../../services/user-service";
+import { AuthContext } from "../contextWrapper";
 
-const Logout = ({ changeLogin, history }) => {
-  userService.logout()
-    .then(() => {
-      changeLogin(false);
-      localStorage.removeItem('username');
-      localStorage.removeItem('userId');
-      history.push('/');
-    })
+const Logout = ({ history }) => {
+  const { setAuth, setUsername } = useContext(AuthContext);
 
-    return null;
-}
+  userService.logout().then(() => {
+    setAuth(false);
+    setUsername(undefined);
+    localStorage.removeItem("username");
+    localStorage.removeItem("userId");
+    history.push("/");
+  });
+
+  return null;
+};
 
 export default Logout;

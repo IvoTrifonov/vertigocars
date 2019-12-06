@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Formik } from "formik";
-import * as Yup from "yup";
+// import * as Yup from "yup";
 import styles from "../../shared/css/carOffersForms.module.css";
 import LoadOffers from '../loadOffers';
 import carService from "../../../services/car-service";
@@ -214,7 +214,7 @@ const FindOffers = ({ history }) => {
         }}
       </Formik>
 
-     { cars.length > 0 ? ( <LoadOffers cars={cars}/> ) : null }
+      <LoadOffers cars={cars}/>
     </div>
   );
 };

@@ -10,25 +10,45 @@
 .wrapper ul {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content: space-around;
 }
 
-.wrapper ul li {
-  width: 25%;
-  padding: 1em;
+.offer {
+  background-color: rgb(209, 209, 209);
+  width: 28%;
+  max-height: 30em;
+  padding: 0.7em;
   border: 1px solid #9da5b2;
   border-radius: 0.7em;
-  margin: 1em;
+  margin: 0.8em;
   list-style-type: none;
+  transition: 0.3s;
 }
 
-.wrapper ul li p {
+.offer:hover {
+  background-color: #ffffff;
+}
+
+.offer p {
   margin: 0.3em;
 }
 
-.wrapper ul li span {
+.offer .imgBox img {
+  border-top-right-radius: 0.7em;
+  border-top-left-radius: 0.7em;
+  display: block;
+  width: 100%;
+  max-height: 15em;
+}
+
+.offer span {
   padding: 0;
   margin-right: 0.5em;
   color: #717780;
   border-bottom: 1px solid #717780;
+}
+
+.wrapper .noRecordsMsg {
+  text-align: center;
+  padding: 1em;
 }

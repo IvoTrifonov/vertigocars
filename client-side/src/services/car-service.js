@@ -17,8 +17,11 @@ const carService = {
       headers: {
         'Content-type': 'application/json'
       },
-      // credentials: 'include'
     }).then(res => res.json())
+  },
+
+  findCar: (id) => {
+    return fetch(`http://localhost:9999/api/car/${id}`).then(res => res.json())
   }
 }
 

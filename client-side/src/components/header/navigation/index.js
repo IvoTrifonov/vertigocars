@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import styles from "./navStyles.module.css";
+import { AuthContext } from "../../contextWrapper";
 
-const Navigation = ({ isLogged, username }) => {
+const Navigation = () => {
+  const { isAuth, username } = useContext(AuthContext);
+
   return (
     <nav className={styles.navigation}>
       <ul className={styles.menu}>
@@ -27,16 +30,16 @@ const Navigation = ({ isLogged, username }) => {
               Dealers
             </NavLink>
           </li>
-          { isLogged && 
+          {isAuth && (
             <li className={styles.profile}>
               <NavLink to="/profile" activeClassName={styles.active}>
                 | {username}'s Profile |
               </NavLink>
-            </li> 
-          }
+            </li>
+          )}
         </div>
 
-        { !isLogged ? (
+        {!isAuth ? (
           <li className={styles.login}>
             <Link to="/login">Login</Link>
           </li>

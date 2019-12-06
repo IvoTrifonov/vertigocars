@@ -9,6 +9,16 @@ module.exports = {
       .catch(next);
   },
 
+  getCar: (req, res ,next) => {
+    const { id } = req.params;
+   
+    models.Car.findById(id)
+      .then(car => {
+        res.send(car);
+      })
+      .catch(next);
+  },
+
   getCars: (req, res, next) => {
     let query = { ...req.body };
     

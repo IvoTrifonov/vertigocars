@@ -1,12 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { Link } from 'react-router-dom';
 import styles from '../shared/css/authFormStyles.module.css';
 import userService from '../../services/user-service';
+import { AuthContext } from '../contextWrapper';
 
-const Login = ({ history, changeLogin }) => {
-  const [errorMessage, setErrorMessage] = useState(undefined);
+const Login = ({ history }) => {
+  const {setAuth, setUsername} = useContext(AuthContext);
+  const [errorMessage, setErrorMessage] = useState(undefined); // to find better way
 
   const submitHandler = (data) => {
       userService.login(data)
@@ -16,7 +18,8 @@ const Login = ({ history, changeLogin }) => {
         } else {
           localStorage.setItem("userId", res._id);
           localStorage.setItem("username", res.username);
-          changeLogin(true);
+          setAuth(true);
+          setUsername(data.username);
           history.push('/');
         }
       })

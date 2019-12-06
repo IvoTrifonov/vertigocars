@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import React, { useState } from "react";
 import { Formik } from "formik";
 import * as Yup from "yup";
@@ -5,11 +6,27 @@ import styles from "../../shared/css/carOffersForms.module.css";
 import carService from "../../../services/car-service";
 
 const CreateOffer = ({ history }) => {
+  const [imageURL, setImageURL] = useState("image");
+
   const handleSubmit = data => {
+    data.ownerId = localStorage.getItem("userId");
+    data.owner = localStorage.getItem("username");
+    data.imageUrl = imageURL;
     carService.createCar(data).then(res => {
       history.push("/caroffers/findoffers");
     });
   };
+
+  const myWidget = cloudinary.createUploadWidget({
+      cloudName: "dzrvyaqbs",
+      apiKey: "462616233243679",
+      uploadPreset: "vertigo"
+    }, (error, result) => {
+      if (!error && result && result.event === "success") {
+        setImageURL(result.info.url);
+      }
+    }
+  );
 
   return (
     <div>
@@ -198,7 +215,8 @@ const CreateOffer = ({ history }) => {
                 ></textarea>
               </div>
 
-              <button type="submit">Create</button>
+              <input type="button" value="Upload image" id="upload_widget" onClick={() => myWidget.open()}/>
+              <button type="submit" onSubmit={handleSubmit}>Create</button>
             </form>
           );
         }}

@@ -62,7 +62,18 @@ const carSchema = new Schema({
     ownerId: {
         type: String,
         required: true
+    },
+
+    owner: {
+        type: String,
+        required: true
+    },
+
+    imageUrl: {
+        type: String
     }
+
+
 });
 
 module.exports = new Model('Car', carSchema);
