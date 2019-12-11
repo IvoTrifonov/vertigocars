@@ -18,13 +18,37 @@ const userService = {
       },
       credentials: 'include'
     }).then(res => res.json())
- },
+  },
 
   logout: () => {
     return fetch(`http://localhost:9999/api/user/logout`, {
       method: 'POST',
       credentials: 'include'
     }).then(res => res.text())
+  },
+
+  getUser: (id) => {
+    return fetch(`http://localhost:9999/api/user/${id}`).then(res=> res.json());
+  },
+
+  updateUser: (id, data) => {
+    return fetch(`http://localhost:9999/api/user/${id}`, {
+      body: JSON.stringify(data),
+      method: 'PUT',
+      headers: {
+        'Content-type': 'application/json'
+      },
+    }).then(res => res.json())
+  },
+
+  deleteSavedCar: (userId, carId) => {
+    return fetch(`http://localhost:9999/api/user/deleteCar/${userId}`, {
+      body: JSON.stringify(carId),
+      method: 'PUT',
+      headers: {
+        'Content-type': 'application/json'
+      },
+    }).then(res => res.json())
   }
 }
 

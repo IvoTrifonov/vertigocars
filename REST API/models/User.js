@@ -22,7 +22,7 @@ const userSchema = new Schema({
         maxlength: [19, 'Password must be less than 18 symbols long!']
     },
 
-    cars: [{ type: ObjectId, ref: "Car" }]
+    savedCars: [{ type: ObjectId, ref: "Car"}]
 
 });
 

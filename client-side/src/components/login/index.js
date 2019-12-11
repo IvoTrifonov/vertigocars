@@ -28,7 +28,7 @@ const Login = ({ history }) => {
   return (
     <Formik
         initialValues={{
-          username: '',
+          username: history.location.state ? history.location.state.username : '',
           password: '',
         }}
         validationSchema={Schema}

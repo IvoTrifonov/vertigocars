@@ -20,9 +20,9 @@ const LoadOffers = ({ cars }) => {
                 <p><span>Horsepower:</span> {car.horsepower}</p>
                 <p><span>Cubic Capacity:</span> {car.cubicCapacity}</p>
                 <p><span>Category:</span> {car.category}</p>
-                <p><span>Price:</span> {car.price}</p>
-                <p><span>Description:</span>{car.description}</p>
+                <p><span>Price:</span> {Number(car.price).toFixed(2)}</p>
                 <p><span>Owner:</span>{car.owner}</p>
+                <p><span>Description:</span>{car.description.length > 60   ? car.description.substring(0, 60) + '...' : car.description}</p>
               </li>
             )
           })} </ul> : <p className={styles.noRecordsMsg}>No records are available for your criteria.</p>}

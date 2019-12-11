@@ -1,0 +1,76 @@
+.wrapper ul {
+  display: flex;
+  flex-direction: column;
+  border-radius: 1em;
+  border: 1px solid gray;
+}
+
+.wrapper ul li {
+  margin: 2em 1em;
+  padding: 1em 0;
+  border-bottom: 1px solid #000000;
+  list-style-type: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.imgBox {
+  margin: 1rem;
+  width: 48%;
+  max-height: 25em;
+}
+
+.imgBox img {
+  width: 100%;
+  height: auto;
+}
+
+.info {
+  width: 40%;
+  margin: 1rem;
+}
+
+.info p { padding: 3px 0; }
+
+.info h3 {
+  margin-bottom: 1em;
+  color: #4A4A4A;
+}
+
+.info span {
+  color: #4A4A4A;
+  margin-right: 1em;
+  border-bottom: 1px solid gray;
+}
+
+.buttonsBox {
+  display: flex;
+  justify-content: space-around;
+  width: 90%;
+}
+
+.buttonsBox p {
+  text-align: center;
+  padding: 0.4em;
+  border-radius: 1em;
+  width: 6em;
+  border: 1px solid transparent; 
+  background: #4A4A4A;
+  color: #ffffff;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.buttonsBox p:hover {
+  background: #ffffff;;
+  color: #4A4A4A;
+  border: 1px solid gray; 
+}
+
+.noOffersMsg {
+  width: 100%;
+  text-align: center;
+  padding: 1em;
+  color: #4A4A4A;
+}

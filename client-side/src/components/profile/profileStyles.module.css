@@ -1,0 +1,36 @@
+.profile {
+  display: flex;
+}
+
+.wrapper aside {
+  margin: 2rem 0;
+}
+
+.wrapper aside ul {
+  display: flex;
+  flex-direction: column;
+  background-color: #4A4A4A;
+  border-top-right-radius: 1em;
+  border-bottom-right-radius: 1em;
+}
+
+.wrapper aside ul li {
+  margin: 1em;
+  list-style-type: none;
+}
+
+.wrapper aside ul li a {
+  padding-bottom: 2px;
+  text-shadow: 1.5px 1.5px #141414;
+  letter-spacing: 1px;
+  color: #ffffff;
+}
+
+.active {
+  border-bottom: 1.5px solid #ffffff;
+}
+
+.profileContent {
+  margin: 2rem 0 0 11rem;
+  width: 60%;
+}

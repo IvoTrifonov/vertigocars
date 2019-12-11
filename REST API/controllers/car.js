@@ -1,4 +1,5 @@
 const models = require('../models');
+const ObjectId = require('mongodb').ObjectID;
 
 module.exports = {
   create: (req, res, next) => {
@@ -11,8 +12,8 @@ module.exports = {
 
   getCar: (req, res ,next) => {
     const { id } = req.params;
-   
-    models.Car.findById(id)
+
+    models.Car.findById({ _id: id })
       .then(car => {
         res.send(car);
       })
@@ -23,19 +24,59 @@ module.exports = {
     let query = { ...req.body };
     
     Object.keys(query).forEach(key => {
-      if (!query[key] || key === 'price') {
+      if (!query[key] || key === 'maxPrice') {
         delete query[key];
       }
     });
 
     models.Car.find(query)
       .then(foundCars => {
-        if (req.body.price) {
-          foundCars = foundCars.filter(c => +c.price <= +req.body.price)
+        if (req.body.maxPrice) {
+          foundCars = foundCars.filter(c => +c.price <= +req.body.maxPrice)
         }
 
         res.send(foundCars)
       })
       .catch(next);
   },
+
+  updateCar: (req, res, next) => {
+    const { id } = req.params;
+    const { userId } = req.body;
+
+    models.Car.findOneAndUpdate({_id: id}, { $push: {'likedBy': userId }, new: true })
+      .then(updatedCar => {
+          res.send(updatedCar);
+      }).catch(next);
+  },
+
+  getCarsByUserId: (req, res, next) => {
+    const { id } = req.params;
+
+    models.Car.find({ ownerId: id })
+      .then(receivedCars => {
+        res.send(receivedCars);
+      }).catch(next);
+      
+  },
+
+  getSavedCars: (req, res, next) => {
+    let { ids } = req.params;
+    const arrayIds = ids !== 'empty' ? ids.split(',') : null;
+
+    models.Car.find({ '_id': arrayIds })
+      .then(cars => {
+        res.send(cars);
+      }).catch(next);
+  },
+
+  delete: (req, res, next) => {
+    const { id } = req.params;
+
+    models.Car.findByIdAndRemove({ _id: id })
+      .then(removed => {
+        res.send(removed);
+      }).catch(next);
+  }
+
 }

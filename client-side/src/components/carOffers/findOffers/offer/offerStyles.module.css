@@ -1,6 +1,6 @@
 .carContainer {
   display: flex;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   margin: 0 auto;
   width: 80%;
   border: 1px solid gray;
@@ -57,3 +57,51 @@
 .carDesc p {
   margin: 1em;
 }
+
+.moreInfo {
+  padding: 0.8em;
+  display: flex;
+  justify-content: space-evenly;
+  margin: 1.3em auto;
+  border: 1px solid gray;
+  border-radius: 1em;
+  width: 90%;
+}
+
+.moreInfo .price {
+  color: #9e5151;
+  font-size: 1.5em;
+}
+
+.saveOffer, .likeOffer { 
+  font-weight: bold;
+  border: 1px solid gray;
+  padding: 0.3em;
+  border-radius: 0.7em;
+  cursor: pointer;
+  width: 5em;
+  text-align: center;
+  transition: 0.3s;
+}
+
+.saveOffer { background-color: rgb(143, 143, 143); }
+.saveOffer:hover { color: #ffffff; }
+.likeOffer { background: limegreen; }
+.likeOffer:hover { color: #ffffff; }
+
+.likesContainer {
+  background: honeydew;
+  font-size: 1.3em;
+  padding: 0.5em;
+  margin: 0 auto;
+  width: 15%;
+  border: 1px solid gray;
+  border-radius: 0.7em;
+  text-align: center;
+}
+
+.likesContainer span {
+  color: rgb(42, 133, 42);
+  font-weight: bold;
+}
+

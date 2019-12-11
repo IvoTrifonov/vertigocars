@@ -12,7 +12,9 @@ const CreateOffer = ({ history }) => {
     data.ownerId = localStorage.getItem("userId");
     data.owner = localStorage.getItem("username");
     data.imageUrl = imageURL;
-    carService.createCar(data).then(res => {
+    data.likes = 0;
+    
+    carService.createCar(data).then(car => {
       history.push("/caroffers/findoffers");
     });
   };

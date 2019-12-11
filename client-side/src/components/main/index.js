@@ -13,12 +13,7 @@ import ProtectedRoute from '../protectedRoute';
 import Offer from '../carOffers/findOffers/offer';
 import styles from './mainStyles.module.css';
 import { AuthContext } from '../contextWrapper';
-
-function render(Cmp, otherProps) {
-  return function (props) {
-    return <Cmp {...props} {...otherProps} />
-  };
-}
+import render from '../../helpers/render';
 
 const Main = () => {
   const {isAuth} = useContext(AuthContext);
@@ -34,7 +29,7 @@ const Main = () => {
           <ProtectedRoute isLogged={!isAuth} redirectTo="/" path="/login" exact render={render(Login)}/>
           <ProtectedRoute isLogged={isAuth} redirectTo="/" path="/logout" exact render={render(Logout)}/>
           <ProtectedRoute isLogged={!isAuth} redirectTo="/" path="/register" exact render={render(Register)}/>
-          <ProtectedRoute isLogged={isAuth} redirectTo="/login" path="/profile" exact render={render(Profile)}/>
+          <ProtectedRoute isLogged={isAuth} redirectTo="/login" path="/profile" render={render(Profile)}/>
         </Switch>
       </main>
     ) 

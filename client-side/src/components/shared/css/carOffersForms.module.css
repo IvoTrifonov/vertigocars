@@ -71,7 +71,7 @@ option {
   background-color: #4A4A4A;
 }
 
-span {
+.form span {
   color: rgb(214, 59, 59);
   font-size: 0.9em;
   padding-left: 1.3em;

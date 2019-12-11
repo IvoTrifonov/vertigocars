@@ -71,7 +71,9 @@ const carSchema = new Schema({
 
     imageUrl: {
         type: String
-    }
+    },
+
+    likedBy: [{ type: ObjectId, ref: "User" }]
 
 
 });

@@ -4,7 +4,6 @@
   border: 1px solid #9da5b2;
   border-radius: 0.7em;
   padding: 1em;
-
 }
 
 .wrapper ul {
@@ -16,7 +15,7 @@
 .offer {
   background-color: rgb(209, 209, 209);
   width: 28%;
-  max-height: 30em;
+  min-height: 31em;
   padding: 0.7em;
   border: 1px solid #9da5b2;
   border-radius: 0.7em;
