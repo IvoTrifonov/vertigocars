@@ -24,12 +24,12 @@ const YourOffers = ({ history }) => {
   }
 
   const handleEdit = (offer) => {
-
+    
   }
 
   return (
     <div>
-      {loadOffers(yourOffers, handleDelete, handleEdit)}
+      {loadOffers(yourOffers, handleDelete, true)}
     </div>
   )
 }

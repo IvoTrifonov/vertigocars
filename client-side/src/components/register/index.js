@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import { Link } from "react-router-dom";
@@ -6,9 +6,13 @@ import styles from "../shared/css/authFormStyles.module.css";
 import userService from "../../services/user-service";
 
 const Register = ({ history }) => {
+  const [errorMessage, setMessage] = useState(undefined);
+
   const submitHandler = data => {
     userService.register(data).then(() => {
       history.push("/login", { username: data.username });
+    }).catch(err => {
+      setMessage(err);
     });
   };
 
@@ -25,6 +29,7 @@ const Register = ({ history }) => {
       {({ values, errors, handleSubmit, handleChange, handleBlur }) => {
         return (
           <form onSubmit={handleSubmit} className={styles.form}>
+            <span>{errorMessage}</span>
             <label htmlFor="username">Username</label>
             <input
               placeholder="Type username..."

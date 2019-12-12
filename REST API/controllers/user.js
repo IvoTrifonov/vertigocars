@@ -15,8 +15,12 @@ module.exports = {
     register: (req, res, next) => {
       const { username, password, rePassword } = req.body;
       models.User.create({ username, password })
-        .then(createdUser => res.send(createdUser))
-        .catch(next);
+        .then(createdUser => {
+          res.send(createdUser)
+        })
+        .catch(err => {
+          res.status(409).send('This username already exist!');
+        });
     },
 
     login: (req, res, next) => {
@@ -25,18 +29,17 @@ module.exports = {
         .then(user =>
           user
             ? Promise.all([user, user.matchPassword(password)])
-            : [null, null]
+            : [null, false]
         )
         .then(([user, match]) => {
           if (!match) {
-            res.status(401).send("Invalid credentials");
+            res.status(401).send('Invalid username or password');
             return;
           }
 
           const token = utils.jwt.createToken({ id: user._id });
           res.cookie(config.authCookieName, token).send(user);
-        })
-        .catch(next);
+        }).catch(next)
     },
 
     logout: (req, res, next) => {

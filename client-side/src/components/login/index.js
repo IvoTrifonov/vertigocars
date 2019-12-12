@@ -12,16 +12,16 @@ const Login = ({ history }) => {
 
   const submitHandler = (data) => {
       userService.login(data)
-      .then((res) => { 
-        if (res === 'Invalid credentials') {
-          setErrorMessage('Invalid credentials');
-        } else {
+      .then((res) => {
+        
           localStorage.setItem("userId", res._id);
           localStorage.setItem("username", res.username);
           setAuth(true);
           setUsername(data.username);
           history.push('/');
         }
+      ).catch(err => {
+        setErrorMessage(err);
       })
     }
 

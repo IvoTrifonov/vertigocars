@@ -50,7 +50,8 @@
   width: 90%;
 }
 
-.buttonsBox p {
+.buttonsBox p, 
+.buttonsBox a {
   text-align: center;
   padding: 0.4em;
   border-radius: 1em;
@@ -62,7 +63,8 @@
   transition: 0.3s;
 }
 
-.buttonsBox p:hover {
+.buttonsBox p:hover,
+.buttonsBox a:hover {
   background: #ffffff;;
   color: #4A4A4A;
   border: 1px solid gray; 

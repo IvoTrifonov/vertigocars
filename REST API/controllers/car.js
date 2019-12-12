@@ -43,11 +43,13 @@ module.exports = {
   updateCar: (req, res, next) => {
     const { id } = req.params;
     const { userId } = req.body;
+    const data = req.body;
 
-    models.Car.findOneAndUpdate({_id: id}, { $push: {'likedBy': userId }, new: true })
+    models.Car.findOneAndUpdate({ _id: id }, !userId ? data : 
+    { $push: {'likedBy': userId }, new: true })
       .then(updatedCar => {
-          res.send(updatedCar);
-      }).catch(next);
+        res.send(updatedCar)
+      })
   },
 
   getCarsByUserId: (req, res, next) => {

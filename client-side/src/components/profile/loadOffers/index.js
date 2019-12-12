@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './yourOffersStyles.module.css';
+import { Link } from "react-router-dom";
 
 const loadOffers = (offers, handleDelete, handleEdit) => {
     return (
@@ -23,7 +24,7 @@ const loadOffers = (offers, handleDelete, handleEdit) => {
                   <img alt='' src={offer.imageUrl}/>
                 </div>
                 <div className={styles.buttonsBox}>
-                  {handleEdit ? <p onClick={() => {handleEdit(offer)}}>Edit</p> : undefined}
+                  {handleEdit ? <Link to={`/profile/yourOffers/editOffer/${offer._id}`}>Edit</Link> : undefined}
                   <p onClick={() => handleDelete(offer._id)}>Delete</p>
                 </div>
               </li>

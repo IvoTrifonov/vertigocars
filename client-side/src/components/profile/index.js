@@ -6,10 +6,8 @@ import styles from "./profileStyles.module.css";
 import YourOffers from './yourOffers';
 import SavedOffers from './savedOffers';
 import YourReviews from './yourReviews';
-import EditProfile from './editProfile';
 import UserInfo from './userInfo';
-import userService from '../../services/user-service';
-import carService from '../../services/car-service';
+import EditOffer from './editOffer';
 
 const Profile = () => {
   return (
@@ -34,12 +32,6 @@ const Profile = () => {
                   Your Reviews
                 </NavLink>
               </li>
-
-              <li>
-                <NavLink exact to="/profile/editProfile" activeClassName={styles.active}>
-                  Edit Profile
-                </NavLink>
-              </li>
             </ul>
           </nav>
         </aside>
@@ -48,9 +40,9 @@ const Profile = () => {
           <Switch>
             <Route exact path="/profile" component={UserInfo}></Route>
             <Route exact path="/profile/yourOffers" render={render(YourOffers)}></Route>
+            <Route exact path="/profile/yourOffers/editOffer/:id" render={render(EditOffer)}></Route>
             <Route exact path="/profile/savedOffers" render={render(SavedOffers)}></Route>
-            <Route exact path="/profile/yourReviews" component={YourReviews}></Route>
-            <Route exact path="/profile/editProfile" component={EditProfile}></Route>
+            <Route exact path="/profile/yourReviews" render={render(YourReviews)}></Route>
           </Switch>
         </div>
       </div>
