@@ -11,7 +11,7 @@ const YourOffers = ({ history }) => {
       .then(receivedCars => {
         setOffers(receivedCars);
       });
-  }, [])
+  }, [userId])
 
   const handleDelete = (id) => {
     carService.delete(id)
@@ -21,10 +21,6 @@ const YourOffers = ({ history }) => {
             setOffers(receivedCars);
         });
       })
-  }
-
-  const handleEdit = (offer) => {
-    
   }
 
   return (

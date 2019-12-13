@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import carService from "../../../services/car-service";
-import userService from "../../../services/user-service";
 import { Formik } from "formik";
-import * as Yup from "yup";
+import Schema from '../../shared/carValidationSchema';
 import styles from "../../shared/css/carOffersForms.module.css";
 
 const EditOffer = ({ history }) => {
@@ -13,7 +12,7 @@ const EditOffer = ({ history }) => {
     carService.findCar(offerId).then(recivedOffer => {
       setOffer(recivedOffer);
     });
-  }, []);
+  }, [offerId]);
 
   const handleSubmit = data => {
     carService.updateCar(offerId, data)
@@ -24,7 +23,7 @@ const EditOffer = ({ history }) => {
 
   return (
     <div>
-      {offer && (
+      { offer && (
         <React.Fragment>
           <h2 className={styles.title}>Edit Your Offer</h2>
           <Formik
@@ -211,10 +210,9 @@ const EditOffer = ({ history }) => {
                       value={values.description}
                     ></textarea>
                   </div>
-
-                  {/* <input type="button" value="Upload image" id="upload_widget" onClick={() => myWidget.open()}/> */}
+                  
                   <button type="submit" onSubmit={handleSubmit}>
-                    Create
+                    Edit
                   </button>
                 </form>
               );
@@ -225,42 +223,5 @@ const EditOffer = ({ history }) => {
     </div>
   );
 };
-
-const Schema = Yup.object({
-  make: Yup.string().required("Make is required!"),
-
-  model: Yup.string().required("Model is required!"),
-
-  year: Yup.number()
-    .typeError("Year must be a number!")
-    .positive("Year must be positive!")
-    .integer("Horsepower can't include a decimal point!")
-    .required("Horsepower is required!"),
-
-  mileage: Yup.string().required("Mileage is required!"),
-
-  engine: Yup.string().required("Engine type is required!"),
-
-  category: Yup.string().required("Category is required!"),
-
-  horsepower: Yup.number()
-    .typeError("Horsepower must must be a number!")
-    .positive("Horsepower must be positive!")
-    .integer("Horsepower can't include a decimal point!")
-    .required("Horsepower is required!"),
-
-  cubicCapacity: Yup.number()
-    .typeError("Cubic Capacity must must be a number!")
-    .positive("Cubic Capacity must be positive!")
-    .integer("Cubic Capacity can't include a decimal point!")
-    .required("Cubic Cpacity is required!"),
-
-  euroStandard: Yup.string().required("Euro Standard is required!"),
-
-  price: Yup.number()
-    .typeError("Price must must be a number!")
-    .positive("Price must be positive!")
-    .required("Price is required!")
-});
 
 export default EditOffer;

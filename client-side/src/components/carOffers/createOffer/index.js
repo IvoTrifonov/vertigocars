@@ -1,12 +1,26 @@
 /* eslint-disable no-undef */
 import React, { useState } from "react";
 import { Formik } from "formik";
-import * as Yup from "yup";
+import Schema from '../../shared/carValidationSchema';
 import styles from "../../shared/css/carOffersForms.module.css";
 import carService from "../../../services/car-service";
 
 const CreateOffer = ({ history }) => {
-  const [imageURL, setImageURL] = useState("image");
+  const [imageURL, setImageURL] = useState();
+  const [imageFileName, setImageFileName] = useState();
+
+  const imageWidget = cloudinary.createUploadWidget({
+    cloudName: "dzrvyaqbs",
+    apiKey: "462616233243679",
+    uploadPreset: "vertigo"
+  },
+  (error, result) => {
+    if (!error && result && result.event === "success") {
+      setImageFileName(result.info.original_filename + '.' + result.info.format)
+      setImageURL(result.info.url);
+    }
+  }
+);
 
   const handleSubmit = data => {
     data.ownerId = localStorage.getItem("userId");
@@ -18,17 +32,6 @@ const CreateOffer = ({ history }) => {
       history.push("/caroffers/findoffers");
     });
   };
-
-  const myWidget = cloudinary.createUploadWidget({
-      cloudName: "dzrvyaqbs",
-      apiKey: "462616233243679",
-      uploadPreset: "vertigo"
-    }, (error, result) => {
-      if (!error && result && result.event === "success") {
-        setImageURL(result.info.url);
-      }
-    }
-  );
 
   return (
     <div>
@@ -216,8 +219,9 @@ const CreateOffer = ({ history }) => {
                   value={values.description}
                 ></textarea>
               </div>
-
-              <input type="button" value="Upload image" id="upload_widget" onClick={() => myWidget.open()}/>
+              
+              {imageURL && <p className={styles.uploadedMsg}>Successfuly uploaded {imageFileName}!</p>}
+              <input type="button" className={styles.widgetBtn} value="Upload image" id="upload_widget" onClick={() => imageWidget.open()}/>
               <button type="submit" onSubmit={handleSubmit}>Create</button>
             </form>
           );
@@ -226,42 +230,5 @@ const CreateOffer = ({ history }) => {
     </div>
   );
 };
-
-const Schema = Yup.object({
-  make: Yup.string().required("Make is required!"),
-
-  model: Yup.string().required("Model is required!"),
-
-  year: Yup.number()
-    .typeError("Year must be a number!")
-    .positive("Year must be positive!")
-    .integer("Horsepower can't include a decimal point!")
-    .required("Horsepower is required!"),
-
-  mileage: Yup.string().required("Mileage is required!"),
-
-  engine: Yup.string().required("Engine type is required!"),
-
-  category: Yup.string().required("Category is required!"),
-
-  horsepower: Yup.number()
-    .typeError("Horsepower must must be a number!")
-    .positive("Horsepower must be positive!")
-    .integer("Horsepower can't include a decimal point!")
-    .required("Horsepower is required!"),
-
-  cubicCapacity: Yup.number()
-    .typeError("Cubic Capacity must must be a number!")
-    .positive("Cubic Capacity must be positive!")
-    .integer("Cubic Capacity can't include a decimal point!")
-    .required("Cubic Cpacity is required!"),
-
-  euroStandard: Yup.string().required("Euro Standard is required!"),
-
-  price: Yup.number()
-    .typeError("Price must must be a number!")
-    .positive("Price must be positive!")
-    .required("Price is required!")
-});
 
 export default CreateOffer;

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { NavLink } from "react-router-dom";
 import { Switch, Route } from 'react-router-dom';
 import render from '../../helpers/render';
@@ -8,6 +8,8 @@ import SavedOffers from './savedOffers';
 import YourReviews from './yourReviews';
 import UserInfo from './userInfo';
 import EditOffer from './editOffer';
+import EditReview from './editReview';
+import ErrorPage from '../404';
 
 const Profile = () => {
   return (
@@ -43,6 +45,8 @@ const Profile = () => {
             <Route exact path="/profile/yourOffers/editOffer/:id" render={render(EditOffer)}></Route>
             <Route exact path="/profile/savedOffers" render={render(SavedOffers)}></Route>
             <Route exact path="/profile/yourReviews" render={render(YourReviews)}></Route>
+            <Route exact path="/profile/yourReviews/:id" render={render(EditReview)}></Route>
+            <Route path="*" render={render(ErrorPage)}></Route>
           </Switch>
         </div>
       </div>

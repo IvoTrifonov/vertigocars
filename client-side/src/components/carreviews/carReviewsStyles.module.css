@@ -1,0 +1,29 @@
+.wrapper {
+  display: flex;
+  border: 1px solid gray;
+  border-radius: 1em;
+  max-width: 90%;
+  margin: 0 auto;
+  justify-content: space-around;
+}
+
+.carReviewsForm {
+  width: 45%;
+  margin: 1em;
+}
+
+.reviewsContainer {
+  width: 45%;
+  margin: 1em 0;
+}
+
+.loginMsg {
+  text-align: center;
+  padding: 1em;
+}
+
+.loginMsg a {
+  color: rgb(88, 86, 86);
+  text-decoration: inherit;
+  border-bottom: 2px solid rgb(88, 86, 86);
+}

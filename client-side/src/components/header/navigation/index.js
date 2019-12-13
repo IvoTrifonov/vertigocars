@@ -25,11 +25,6 @@ const Navigation = () => {
               Car Reviews
             </NavLink>
           </li>
-          <li>
-            <NavLink to="/dealers" activeClassName={styles.active}>
-              Dealers
-            </NavLink>
-          </li>
           {isAuth && (
             <li className={styles.profile}>
               <NavLink to="/profile" activeClassName={styles.active}>

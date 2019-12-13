@@ -6,7 +6,7 @@ import loadOffers from '../loadOffers';
 const SavedOffers = ({ history }) => {
   const userId = localStorage.getItem('userId');
   const [savedOffers, setSavedOffers] = useState([]);
-
+  
   useEffect(() => {
     userService.getUser(userId)
       .then(user => {
@@ -15,7 +15,7 @@ const SavedOffers = ({ history }) => {
           setSavedOffers(receivedCars);
         });
       })
-  }, []);
+  }, [userId]);
 
   const handleDelete = (carId) => {
     userService.deleteSavedCar(userId, { carId })

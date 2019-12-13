@@ -1,0 +1,59 @@
+.wrapper, .review {
+  border: 1px solid gray;
+  border-radius: 1em;
+  padding: 1em;
+}
+
+.wrapper h3 {
+  text-align: center;
+  padding: 1em;
+  color: #4A4A4A;
+}
+
+.imgBox { 
+  width: 20em;
+}
+
+.imgBox img {
+  width: 100%;
+}
+
+.review {
+  display: flex;
+  list-style-type: none;
+  border-bottom: 1px solid gray;
+  margin: 2em 0.5em;
+}
+
+.info {
+  margin: 1em;
+  width: 60%;
+}
+
+.info h3 {
+  text-align: center;
+}
+
+.buttons {
+  margin: 0.7em 0;
+}
+
+.buttons a,
+.buttons p {
+  cursor: pointer;
+  color: rgb(80, 79, 79);
+  display: block;
+  text-align: center;
+  padding: 0.2em;
+  width: 4em;
+  border: 1px solid gray;
+  border-radius: 0.8em;
+  margin: 0.5em 0;
+  transition: 0.3s;
+}
+
+.buttons a:hover,
+.buttons p:hover {
+  color: #ffffff;
+  background-color: rgb(80, 79, 79);
+}

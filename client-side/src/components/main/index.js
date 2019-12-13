@@ -11,6 +11,7 @@ import Logout from '../logout';
 import Register from '../register';
 import ProtectedRoute from '../protectedRoute';
 import Offer from '../carOffers/findOffers/offer';
+import ErrorPage from '../404';
 import styles from './mainStyles.module.css';
 import { AuthContext } from '../contextWrapper';
 import render from '../../helpers/render';
@@ -30,6 +31,7 @@ const Main = () => {
           <ProtectedRoute isLogged={isAuth} redirectTo="/" path="/logout" exact render={render(Logout)}/>
           <ProtectedRoute isLogged={!isAuth} redirectTo="/" path="/register" exact render={render(Register)}/>
           <ProtectedRoute isLogged={isAuth} redirectTo="/login" path="/profile" render={render(Profile)}/>
+          <Route path='*' exact render={render(ErrorPage)}/>
         </Switch>
       </main>
     ) 

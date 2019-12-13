@@ -32,7 +32,7 @@ const LoadOffers = ({ cars }) => {
 
   return (
     <div className={styles.wrapper}>
-      {loadCars()}
+      {loadCars() || <p>loading...</p>}
     </div>
   )
 }

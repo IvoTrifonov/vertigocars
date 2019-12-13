@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Formik } from "formik";
-// import * as Yup from "yup";
+import Schema from '../../shared/filterSchema';
 import styles from "../../shared/css/carOffersForms.module.css";
 import LoadOffers from '../loadOffers';
 import carService from "../../../services/car-service";
@@ -21,7 +21,7 @@ const FindOffers = ({ history }) => {
               return (
                 <li key={i}>
                   <span className={styles.searchKey}>{key}:</span>
-                  {searchValues[key]}
+                  {key === 'maxPrice' ? Number(searchValues[key]).toFixed(2)  : searchValues[key]}
                 </li>
               );
             })}
@@ -63,12 +63,13 @@ const FindOffers = ({ history }) => {
           make: "",
           model: "",
           mileage: "",
+          year: "",
           engine: "",
           horsepower: "",
           category: "",
           maxPrice: ""
         }}
-        // validationSchema={{}}
+        validationSchema={Schema}
         onSubmit={handleSubmit}
       >
         {({ values, errors, handleSubmit, handleChange, handleBlur }) => {
@@ -111,6 +112,7 @@ const FindOffers = ({ history }) => {
                         onChange={handleChange}
                         value={values.year}
                       />
+                      <span>{errors.year}</span>
                     </div>
 
                     <div className={styles.mileage}>
@@ -130,7 +132,6 @@ const FindOffers = ({ history }) => {
                         <option value="90000" label="Up to 90000" />
                         <option value="100000" label="Over 100000" />
                       </select>
-                      <span>{errors.mileage}</span>
                     </div>
 
                     <div className={styles.horsepower}>
@@ -143,6 +144,7 @@ const FindOffers = ({ history }) => {
                         onChange={handleChange}
                         value={values.horsepower}
                       />
+                      <span>{errors.horsepower}</span>
                     </div>
 
                     <div className={styles.engine}>
@@ -158,7 +160,6 @@ const FindOffers = ({ history }) => {
                         <option value="diesel" label="diesel" />
                         <option value="gasoine" label="gasoline" />
                       </select>
-                      <span>{errors.engine}</span>
                     </div>
 
                     <div className={styles.category}>
@@ -177,7 +178,6 @@ const FindOffers = ({ history }) => {
                         <option value="cabriolet" label="Cabriolet" />
                         <option value="hatchback" label="Hatchback" />
                       </select>
-                      <span>{errors.category}</span>
                     </div>
 
                     <div className={styles.maxPrice}>
