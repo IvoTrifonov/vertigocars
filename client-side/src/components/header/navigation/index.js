@@ -11,8 +11,8 @@ const Navigation = () => {
       <ul className={styles.menu}>
         <div className={styles.wrapper}>
           <li>
-            <NavLink exact activeClassName={styles.active} to="/">
-              Home
+            <NavLink className={styles.logoLink} exact to="/">
+              <div className={styles.logo}><img src='vertigo_logo.png' alt=''/></div>
             </NavLink>
           </li>
           <li>

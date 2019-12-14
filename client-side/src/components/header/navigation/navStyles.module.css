@@ -26,7 +26,7 @@
   transition: 0.4s;
 }
 
-.menu li a:hover,
+.menu li a:hover:not(.logoLink),
 .menu .active {
   text-shadow: none;
   background-color: #ffffff;
@@ -51,4 +51,15 @@
   background-color: transparent;
   color: #FFF;
   border-color: #FFF;
+}
+
+.menu .logo {
+  margin-top: -2.6rem;
+  width: 11rem;
+  height: 3.8rem;
+}
+
+.menu .logo img {
+  width: 100%;
+  height: auto;
 }
