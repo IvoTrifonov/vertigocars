@@ -39,7 +39,7 @@ const reviewService = {
     return fetch(`http://localhost:9999/api/review/${id}`, {
       method: 'DELETE'
     }).then(res => res.json())
-  }
+  },
 }
 
 export default reviewService;
